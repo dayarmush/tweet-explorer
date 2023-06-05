@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import Filter from "./Filter";
+import Search from "./Search";
+import NewTweet from "./NewTweet";
+import { Routes, Route } from "react-router-dom";
+import NavBar from "./NavBar";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          tweet explorer
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar />
+      <Routes>
+        <Route path='/Search' element={<Search />} />   
+        <Route path='Filter' element={<Filter/>} />
+        <Route path='/newTweet' element={<NewTweet />} />
+      </Routes>
     </div>
   );
 }
