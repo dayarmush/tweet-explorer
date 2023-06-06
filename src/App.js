@@ -17,32 +17,29 @@ function App() {
     .then(tweetData => setTweets(tweetData))
   }, [])
 
-  const withId = tweets.map(tweet => {
-    return {'keyword': tweet.keyword, 'tweet': tweet.tweet, 'likes': tweet.likes , 'id': counter++}
-  })
-
   const topTweets = tweets.slice(0, 100)
+  const [search, setSearch] = useState("")
 
   return (
     <div className="App">
       <NavBar />
       <div className="page">
         <Routes>
-          <Route path='/Search' element={<Search />} />   
-          <Route path='Filter' element={<Filter tweets={tweets}/>} />
-          <Route path='/newTweet' element={<NewTweet />} />
+          <Route path='/Search' element={<Search setSearch={setSearch} tweets={tweets} search={search} />} />
+          <Route path='/Filter' element={<Filter  tweets={tweets}/>} />
+          <Route path='/newTweet' element={<NewTweet tweets={tweets} setTweets={setTweets}/>} />
           <Route exact path='/' element={<Homepage 
           tweets={tweets} 
           setTweets={setTweets} 
           keyword={tweets.keyword} 
           likes={tweets.likes} 
           tweet={tweets.tweet} 
-        /> } />
+        />} />
         </Routes>
       </div>
       
     </div>
   );
 }
-
-export default App;
+  
+  export default App;
