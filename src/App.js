@@ -23,7 +23,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path='/Search' element={<Search />} />   
-        <Route path='Filter' element={<Filter/>} />
+        <Route path='Filter' element={<Filter tweets={tweets}/>} />
         <Route path='/newTweet' element={<NewTweet />} />
         <Route exact path='/' element={<Homepage topTweets={topTweets} setTweets={setTweets} /> } />
       </Routes>

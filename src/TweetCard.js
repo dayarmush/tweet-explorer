@@ -1,4 +1,5 @@
 function TweetCard({ singleTweet }) {
+    
     const { likes, tweet } = singleTweet
 
     return (
