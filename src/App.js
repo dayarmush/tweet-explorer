@@ -26,7 +26,13 @@ function App() {
         <Route path='/Search' element={<Search setSearch={setSearch} tweets={tweets} search={search} />} />
         <Route path='/Filter' element={<Filter />} />
         <Route path='/newTweet' element={<NewTweet tweets={tweets} setTweets={setTweets}/>} />
-        <Route exact path='/' element={<Homepage topTweets={topTweets} setTweets={setTweets} />} />
+        <Route exact path='/' element={<Homepage 
+          tweets={tweets} 
+          setTweets={setTweets} 
+          keyword={tweets.keyword} 
+          likes={tweets.likes} 
+          tweet={tweets.tweet} 
+        />} />
       </Routes>
     </div>
   );
