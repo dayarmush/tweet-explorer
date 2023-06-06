@@ -1,7 +1,10 @@
 import TweetCard from "./TweetCard"
 
-function Homepage ({ topTweets }) {
+function Homepage ({ tweets, keyword, likes, tweet }) {
 
+    const sortedTweets = tweets.sort((a, b) => b.likes - a.likes)
+    const topTweets = sortedTweets.slice(0, 100)
+    
     let counter = 0
 
     return(

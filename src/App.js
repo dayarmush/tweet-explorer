@@ -16,8 +16,6 @@ function App() {
     .then(tweetData => setTweets(tweetData))
   }, [])
 
-  const topTweets = tweets.slice(0, 100)
-
   return (
     <div className="App">
       <NavBar />
@@ -25,7 +23,13 @@ function App() {
         <Route path='/Search' element={<Search />} />   
         <Route path='Filter' element={<Filter/>} />
         <Route path='/newTweet' element={<NewTweet />} />
-        <Route exact path='/' element={<Homepage topTweets={topTweets} setTweets={setTweets} /> } />
+        <Route exact path='/' element={<Homepage 
+          tweets={tweets} 
+          setTweets={setTweets} 
+          keyword={tweets.keyword} 
+          likes={tweets.likes} 
+          tweet={tweets.tweet} 
+        /> } />
       </Routes>
     </div>
   );
