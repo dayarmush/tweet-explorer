@@ -17,18 +17,19 @@ function App() {
   }, [])
 
   const topTweets = tweets.slice(0, 100)
+  const [search, setSearch] = useState("")
 
   return (
     <div className="App">
       <NavBar />
       <Routes>
-        <Route path='/Search' element={<Search />} />   
-        <Route path='Filter' element={<Filter/>} />
-        <Route path='/newTweet' element={<NewTweet />} />
-        <Route exact path='/' element={<Homepage topTweets={topTweets} setTweets={setTweets} /> } />
+        <Route path='/Search' element={<Search setSearch={setSearch} tweets={tweets} search={search} />} />
+        <Route path='/Filter' element={<Filter />} />
+        <Route path='/newTweet' element={<NewTweet tweets={tweets} setTweets={setTweets}/>} />
+        <Route exact path='/' element={<Homepage topTweets={topTweets} setTweets={setTweets} />} />
       </Routes>
     </div>
   );
 }
-
-export default App;
+  
+  export default App;
