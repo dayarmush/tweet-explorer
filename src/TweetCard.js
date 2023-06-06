@@ -3,9 +3,10 @@ function TweetCard({ singleTweet }) {
     const { likes, tweet } = singleTweet
 
     return (
-        <div>
+        <div className="card">
             <p>{tweet}</p>
-        </div>
+            <h3 className="card-likes">♥️ {likes}</h3>
+        </div> 
     )
 }
 

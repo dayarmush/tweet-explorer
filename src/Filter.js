@@ -3,7 +3,8 @@ import TweetCard from './TweetCard';
 
 function Filter({ tweets }) {
 
-  const [filter, setFilter] = useState('netflix')
+  const [filter, setFilter] = useState('')
+  const [slice, setSlice] = useState([0, 100])
   
   let counter = 0;
 
@@ -19,19 +20,39 @@ function Filter({ tweets }) {
     setFilter(e.target.value)
   }
 
+  const handleNext = () => {
+    setSlice(prev => prev.map(pre => pre += 100))
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  const handlePrev = () => {
+    if (slice[0] === 0) {
+      return null
+    } else {
+      setSlice(prev => prev.map(pre => pre -= 100))
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  }
+
   const filteredTweets = tweets.filter(tweet => {
     return tweet.keyword.toLowerCase().includes(filter.toLocaleLowerCase())
   })
 
   const renderFilteredTweets = filteredTweets
-  .slice(0, 100).map(tweet => {
+  .slice(slice[0], slice[1]).map(tweet => {
     return <TweetCard key={counter++} singleTweet={tweet}/>
   })
     
 
     return (
       <div>
-        <div>
+        <div className='filter'>
           <label htmlFor="filter">Filter By Category:</label>
           <select name="filter" onChange={handleFilter}>
             {categories.map(cat => <option key={counter++}>{cat}</option>)}
@@ -40,6 +61,8 @@ function Filter({ tweets }) {
 
         <div>
           {renderFilteredTweets}
+          <button onClick={handlePrev}>Previous</button>
+          <button onClick={handleNext}>Next</button>
         </div>
       </div>
     )

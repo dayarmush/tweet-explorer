@@ -7,6 +7,7 @@ import Homepage from "./Homepage";
 import React, { useState, useEffect} from "react";
 
 function App() {
+  let counter = 0
 
   const [tweets, setTweets] = useState([])
 
@@ -16,17 +17,24 @@ function App() {
     .then(tweetData => setTweets(tweetData))
   }, [])
 
+  const withId = tweets.map(tweet => {
+    return {'keyword': tweet.keyword, 'tweet': tweet.tweet, 'likes': tweet.likes , 'id': counter++}
+  })
+
   const topTweets = tweets.slice(0, 100)
 
   return (
     <div className="App">
       <NavBar />
-      <Routes>
-        <Route path='/Search' element={<Search />} />   
-        <Route path='Filter' element={<Filter tweets={tweets}/>} />
-        <Route path='/newTweet' element={<NewTweet />} />
-        <Route exact path='/' element={<Homepage topTweets={topTweets} setTweets={setTweets} /> } />
-      </Routes>
+      <div className="page">
+        <Routes>
+          <Route path='/Search' element={<Search />} />   
+          <Route path='Filter' element={<Filter tweets={tweets}/>} />
+          <Route path='/newTweet' element={<NewTweet />} />
+          <Route exact path='/' element={<Homepage topTweets={topTweets} setTweets={setTweets} /> } />
+        </Routes>
+      </div>
+      
     </div>
   );
 }
