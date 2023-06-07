@@ -17,15 +17,15 @@ function Search({setSearch, tweets, search, slice, handleNext, handlePrev}) {
   })
 
   return (
-    <div className="ui search">
-      <div className="ui icon input">
-        <input className="prompt" onChange={handleChange} />
+    <div>
+      <div className='search-container'>
         <h1>Search</h1>
-        {renderSearch}
+        <input placeholder='🔎' onChange={handleChange} />
       </div>
       <div>
-      <Buttons text='Previous' callBack={handlePrev} />
-      <Buttons callBack={handleNext} />
+        {renderSearch}
+        <Buttons text='Previous' callBack={handlePrev} />
+        <Buttons callBack={handleNext} />
       </div>
     </div>
   );
