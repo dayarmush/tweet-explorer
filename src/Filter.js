@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import TweetCard from './TweetCard';
+import Buttons from './Buttons';
 
 function Filter({ tweets, slice, handleNext, handlePrev}) {
 
@@ -38,8 +39,8 @@ function Filter({ tweets, slice, handleNext, handlePrev}) {
 
         <div>
           {renderFilteredTweets}
-          <button onClick={handlePrev}>Previous</button>
-          <button onClick={handleNext}>Next</button>
+          <Buttons text={'Previous'} callBack={handlePrev} />
+          <Buttons callBack={handleNext} />
         </div>
       </div>
     )

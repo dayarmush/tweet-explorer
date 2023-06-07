@@ -1,4 +1,5 @@
 import React from 'react';
+import Buttons from './Buttons';
 import TweetCard from "./TweetCard";
 
 function Search({setSearch, tweets, search, slice, handleNext, handlePrev}) {
@@ -23,8 +24,8 @@ function Search({setSearch, tweets, search, slice, handleNext, handlePrev}) {
         {renderSearch}
       </div>
       <div>
-        <button onClick={handleNext}>Next</button>
-        <button onClick={handlePrev}>Previous</button>
+      <Buttons text='Previous' callBack={handlePrev} />
+      <Buttons callBack={handleNext} />
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import Buttons from "./Buttons"
 import TweetCard from "./TweetCard"
 
 function Homepage ({ tweets, handleNext, handlePrev, slice }) {
@@ -12,8 +13,8 @@ function Homepage ({ tweets, handleNext, handlePrev, slice }) {
         return <TweetCard key={tweet.id} singleTweet={tweet} />
       })}
       <div>
-        <button onClick={handleNext}>Next</button>
-        <button onClick={handlePrev}>Previous</button>
+        <Buttons text="Previous" callBack={handlePrev} />
+        <Buttons callBack={handleNext} />
       </div>
     </div>
     )

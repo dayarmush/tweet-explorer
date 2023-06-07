@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import Buttons from "./Buttons";
 
 function NewTweet({ setTweets }) {
 
@@ -32,7 +32,7 @@ function NewTweet({ setTweets }) {
         <input type="text" name="keyword" placeholder="Category" className="keyword-input"/>
         <textarea type="text" name="tweet" placeholder="Tweet" className="textarea-field"/>
       </div>
-      <button type="submit" className="submit-button">Tweet</button>
+      <Buttons text="Tweet" type="submit" style="submit-button" />
     </form>
   );
 }
