@@ -1,10 +1,10 @@
 import Filter from "./Filter";
 import Search from "./Search";
-import NewTweet from "./NewTweet";
-import { Routes, Route } from "react-router-dom";
 import NavBar from "./NavBar";
+import NewTweet from "./NewTweet";
 import Homepage from "./Homepage";
-import React, { useState, useEffect} from "react";
+import { useState, useEffect} from "react";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
 
@@ -19,7 +19,7 @@ function App() {
   }, [])
   
   const handleNext = () => {
-    slice[0] && setSlice(prev => prev.map(pre => pre += 100))
+    tweets.length && setSlice(prev => prev.map(pre => pre += 100))
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
@@ -28,15 +28,15 @@ function App() {
 
   const handlePrev = () => {
     slice[0] && setSlice(prev => prev.map(pre => pre -= 100))
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBar setSlice={setSlice}/>
       <div className="page">
         <Routes>
 
@@ -71,9 +71,6 @@ function App() {
             <Homepage 
               tweets={tweets} 
               setTweets={setTweets} 
-              keyword={tweets.keyword} 
-              likes={tweets.likes} 
-              tweet={tweets.tweet} 
               handleNext={handleNext}
               handlePrev={handlePrev}
               slice={slice}
@@ -81,7 +78,6 @@ function App() {
           }/>
         </Routes>
       </div>
-      
     </div>
   );
 }

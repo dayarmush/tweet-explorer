@@ -23,8 +23,8 @@ function Search({setSearch, tweets, search, slice, handleNext, handlePrev}) {
         {renderSearch}
       </div>
       <div>
-        <button onClick={handleNext}>Previous</button>
-        <button onClick={handlePrev}>Next</button>
+        <button onClick={handleNext}>Next</button>
+        <button onClick={handlePrev}>Previous</button>
       </div>
     </div>
   );

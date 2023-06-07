@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom'
 
-function NavBar() {
+function NavBar({ setSlice }) {
     return ( 
         <div className='header'>
-          <NavLink to='/'>Homepage</NavLink>
+          <NavLink to='/' onClick={() => setSlice([0, 100])}>Homepage</NavLink>
           <NavLink to='/search'>Search</NavLink>
           <NavLink to='/newTweet'>New Tweet</NavLink>
           <NavLink to='/filter'>Filter</NavLink>
