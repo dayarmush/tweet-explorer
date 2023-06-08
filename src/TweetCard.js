@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import Buttons from "./Buttons";
 
-function TweetCard({ singleTweet, isLoggedIn, handleLike, setTweets, tweets  }) {
+function TweetCard({ singleTweet, isLoggedIn, handleLike, setTweets}) {
 
   const { likes, tweet, id } = singleTweet;
 

@@ -3,10 +3,11 @@ import TweetCard from './TweetCard'
 import NewTweet from './NewTweet'
 import { useEffect, useState } from 'react'
 
-function Login({isLoggedIn, setIsLoggedIn, user, setUser, handleLike, setTweets}) {
+function Login({isLoggedIn, setIsLoggedIn, user, setUser, handleLike, setTweets, likedTweets}) {
 
   const [users, setUsers] = useState([])
   const [userName, setUsername] = useState('')
+  let renderLikedTweets
 
   useEffect(() => {
     fetch('http://localhost:3000/users')
@@ -33,8 +34,17 @@ function Login({isLoggedIn, setIsLoggedIn, user, setUser, handleLike, setTweets}
     setIsLoggedIn(pre => !pre)
   }
 
-  // const likedTweets = user.tweets[0].map(tweet => console.log(tweet))
-  if (user.tweets) console.log(user.tweets)
+  if (user.tweets) {
+     renderLikedTweets = likedTweets.map(tweet => {
+      return <TweetCard 
+        key={tweet.id}
+        singleTweet={tweet} 
+        isLoggedIn={isLoggedIn} 
+        handleLike={handleLike}
+      />
+    })
+  }
+  
 
   return ( 
     <div>
@@ -49,16 +59,15 @@ function Login({isLoggedIn, setIsLoggedIn, user, setUser, handleLike, setTweets}
       }
 
       {isLoggedIn && <NewTweet setTweets={setTweets}/>}
-
-      {/* don't forget to map */}
-      {isLoggedIn && 
-        user.tweets && 
-        <TweetCard 
-          singleTweet={user.tweets} 
-          isLoggedIn={isLoggedIn} 
-          handleLike={handleLike}
-        />
-      }
+      
+      <div>
+        {isLoggedIn && <h3>Liked Tweets</h3>}
+        {isLoggedIn && renderLikedTweets}
+      </div>
+      <div>
+        
+      </div>
+      
     </div>  
   );
 }

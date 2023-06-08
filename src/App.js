@@ -2,7 +2,6 @@ import Login from "./Login";
 import Filter from "./Filter";
 import Search from "./Search";
 import NavBar from "./NavBar";
-import NewTweet from "./NewTweet";
 import Homepage from "./Homepage";
 import { useState, useEffect} from "react";
 import { Routes, Route } from "react-router-dom";
@@ -48,17 +47,17 @@ function App() {
 
   function handleLike(id) {
     setLikedTweets(pre => {
-      const updatedLikedTweets = [...pre, ...tweets.filter(tweet => tweet.id === id)];
-      setTimeout(() => {
-        fetch(`http://localhost:3000/users/${user.id}`, {
-        method: 'PATCH',
-        headers: {
-          'content-Type' : 'application/json'
-        },
-        body: JSON.stringify({'tweets': updatedLikedTweets})
-        })
-      }, 2000);
-      return updatedLikedTweets;
+      return [...pre, ...tweets.filter(tweet => tweet.id === id)];
+      // setTimeout(() => {
+      //   fetch(`http://localhost:3000/users/${user.id}`, {
+      //   method: 'PATCH',
+      //   headers: {
+      //     'content-Type' : 'application/json'
+      //   },
+      //   body: JSON.stringify({'tweets' : updatedLikedTweets})
+      //   })
+      // }, 2000);
+    
     })
   }
 
@@ -102,6 +101,7 @@ function App() {
               setUser={setUser}
               handleLike={handleLike}
               setTweets={setTweets}
+              likedTweets={likedTweets}
             />} 
           />
 
