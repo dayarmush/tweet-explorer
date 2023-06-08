@@ -7,7 +7,6 @@ function NavBar({ setSlice }) {
           <NavLink to='/search'>Search</NavLink>
           <NavLink to='/filter'>Filter</NavLink>
           <NavLink to='/login'>Login</NavLink>
-          <NavLink to='/newTweet'>New Tweet</NavLink>
         </div>
      );
 }

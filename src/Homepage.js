@@ -1,7 +1,7 @@
 import Buttons from "./Buttons"
 import TweetCard from "./TweetCard"
 
-function Homepage ({ tweets, handleNext, handlePrev, slice, isLoggedIn, handleLike }) {
+function Homepage ({ tweets, handleNext, handlePrev, slice, isLoggedIn, handleLike, setTweets }) {
 
   const tweetCopy = [...tweets]
   const sortedTweets = tweetCopy.sort((a, b) => b.likes - a.likes)
@@ -10,7 +10,14 @@ function Homepage ({ tweets, handleNext, handlePrev, slice, isLoggedIn, handleLi
   return(
     <div>
       {topTweets.map((tweet) => {
-        return <TweetCard key={tweet.id} singleTweet={tweet} isLoggedIn={isLoggedIn} handleLike={handleLike}/>
+        return <TweetCard 
+                key={tweet.id} 
+                singleTweet={tweet} 
+                isLoggedIn={isLoggedIn} 
+                handleLike={handleLike}
+                tweets={tweets}
+                setTweets={setTweets}
+              />
       })}
       <div>
         <Buttons text="Previous" callBack={handlePrev} />

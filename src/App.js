@@ -78,6 +78,7 @@ function App() {
               handlePrev={handlePrev}
               isLoggedIn={isLoggedIn}
               handleLike={handleLike}
+              setTweets={setTweets}
             />
           }/>
 
@@ -89,6 +90,7 @@ function App() {
               handlePrev={handlePrev}
               isLoggedIn={isLoggedIn}
               handleLike={handleLike}
+              setTweets={setTweets}
             /> 
           }/>
 
@@ -99,14 +101,8 @@ function App() {
               user={user}
               setUser={setUser}
               handleLike={handleLike}
-            />} 
-          />
-
-          <Route path='/newTweet' element={
-            <NewTweet 
-              tweets={tweets} 
               setTweets={setTweets}
-            />}
+            />} 
           />
 
           <Route exact path='/' element={
