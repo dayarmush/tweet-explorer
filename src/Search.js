@@ -2,7 +2,7 @@ import React from 'react';
 import Buttons from './Buttons';
 import TweetCard from "./TweetCard";
 
-function Search({setSearch, tweets, search, slice, handleNext, handlePrev}) {
+function Search({setSearch, tweets, search, slice, handleNext, handlePrev, isLoggedIn, handleLike}) {
   
   function handleChange(event) {
     setSearch(event.target.value)
@@ -13,7 +13,7 @@ function Search({setSearch, tweets, search, slice, handleNext, handlePrev}) {
   })
 
   const renderSearch = filteredTweets.slice(slice[0], slice[1]).map(tweet => {
-    return <TweetCard key={tweet.id} singleTweet={tweet} />
+    return <TweetCard key={tweet.id} singleTweet={tweet} isLoggedIn={isLoggedIn} handleLike={handleLike}/>
   })
 
   return (

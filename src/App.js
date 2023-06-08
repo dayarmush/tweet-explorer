@@ -9,9 +9,12 @@ import { Routes, Route } from "react-router-dom";
 
 function App() {
 
+  const [user, setUser] = useState([])
   const [search, setSearch] = useState("")
   const [tweets, setTweets] = useState([])
   const [slice, setSlice] = useState([0, 100])
+  const [likedTweets, setLikedTweets] = useState([])
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
     fetch('http://localhost:3000/twitter')
@@ -43,6 +46,22 @@ function App() {
     }
   }
 
+  function handleLike(id) {
+    setLikedTweets(pre => {
+      const updatedLikedTweets = [...pre, ...tweets.filter(tweet => tweet.id === id)];
+      setTimeout(() => {
+        fetch(`http://localhost:3000/users/${user.id}`, {
+        method: 'PATCH',
+        headers: {
+          'content-Type' : 'application/json'
+        },
+        body: JSON.stringify({'tweets': updatedLikedTweets})
+        })
+      }, 2000);
+      return updatedLikedTweets;
+    })
+  }
+
   return (
     <div className="App">
       <NavBar setSlice={setSlice}/>
@@ -57,6 +76,8 @@ function App() {
               slice={slice}
               handleNext={handleNext}
               handlePrev={handlePrev}
+              isLoggedIn={isLoggedIn}
+              handleLike={handleLike}
             />
           }/>
 
@@ -66,10 +87,20 @@ function App() {
               slice={slice}
               handleNext={handleNext}
               handlePrev={handlePrev}
+              isLoggedIn={isLoggedIn}
+              handleLike={handleLike}
             /> 
           }/>
 
-          <Route path='/login' element={<Login />} />
+          <Route path='/login' element={
+            <Login 
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+              user={user}
+              setUser={setUser}
+              handleLike={handleLike}
+            />} 
+          />
 
           <Route path='/newTweet' element={
             <NewTweet 
@@ -85,6 +116,8 @@ function App() {
               handleNext={handleNext}
               handlePrev={handlePrev}
               slice={slice}
+              isLoggedIn={isLoggedIn}
+              handleLike={handleLike}
             />
           }/>
         </Routes>

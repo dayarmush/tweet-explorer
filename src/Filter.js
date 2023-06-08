@@ -2,7 +2,7 @@ import { useState } from 'react';
 import TweetCard from './TweetCard';
 import Buttons from './Buttons';
 
-function Filter({ tweets, slice, handleNext, handlePrev}) {
+function Filter({ tweets, slice, handleNext, handlePrev, isLoggedIn, handleLike}) {
 
   const [filter, setFilter] = useState('')
 
@@ -24,7 +24,7 @@ function Filter({ tweets, slice, handleNext, handlePrev}) {
 
   const renderFilteredTweets = filteredTweets
   .slice(slice[0], slice[1]).map(tweet => {
-    return <TweetCard key={tweet.id} singleTweet={tweet}/>
+    return <TweetCard key={tweet.id} singleTweet={tweet} isLoggedIn={isLoggedIn} handleLike={handleLike}/>
   })
     
 
