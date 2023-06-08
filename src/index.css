@@ -170,3 +170,8 @@ button:hover {
   border: none;
   border-radius: 30px;
 }
+
+.login {
+  margin-top: 10em;
+  padding: 10px;
+}

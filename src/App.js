@@ -1,3 +1,4 @@
+import Login from "./Login";
 import Filter from "./Filter";
 import Search from "./Search";
 import NavBar from "./NavBar";
@@ -67,6 +68,8 @@ function App() {
               handlePrev={handlePrev}
             /> 
           }/>
+
+          <Route path='/login' element={<Login />} />
 
           <Route path='/newTweet' element={
             <NewTweet 
