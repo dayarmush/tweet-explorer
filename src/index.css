@@ -28,8 +28,12 @@ a.active {
   flex-direction: column;
 }
 
+/* https://cdn.vox-cdn.com/thumbor/jBODMz9xwnGVl8cFJ-ZBjFvLZSM=/0x0:900x600/1400x1400/filters:focal(450x300:451x301)/cdn.vox-cdn.com/uploads/chorus_asset/file/6846843/twitter.0.png */
+/* https://cdn.pixabay.com/photo/2021/06/23/18/39/twitter-6359408_960_720.png) */
+/* https://www.digitaltrends.com/wp-content/uploads/2021/03/how-to-buy-twitter-followers-1.jpeg?resize=625%2C417&p=1 */
+
 body {
-  background-image: url(https://www.digitaltrends.com/wp-content/uploads/2021/03/how-to-buy-twitter-followers-1.jpeg?resize=625%2C417&p=1);
+  background-image: url(https://img.freepik.com/premium-vector/twitter-logo-pattern-background_601658-528.jpg?w=2000);
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;

@@ -19,19 +19,27 @@ function App() {
   }, [])
   
   const handleNext = () => {
-    tweets.length && setSlice(prev => prev.map(pre => pre += 100))
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    if (slice[1] === parseInt(tweets.length)) {
+      return alert('Error: No more pages')
+    } else {
+      setSlice(prev => prev.map(pre => pre += 100))
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
   }
 
   const handlePrev = () => {
-    slice[0] && setSlice(prev => prev.map(pre => pre -= 100))
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+      if (slice[0] === 0) {
+      alert('Error: Can only go Next')
+    } else {
+      setSlice(prev => prev.map(pre => pre -= 100))
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
   }
 
   return (

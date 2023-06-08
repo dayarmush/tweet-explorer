@@ -32,7 +32,7 @@ function NewTweet({ setTweets }) {
         <input type="text" name="keyword" placeholder="Category" className="keyword-input"/>
         <textarea type="text" name="tweet" placeholder="Tweet" className="textarea-field"/>
       </div>
-      <Buttons text="Tweet" type="submit" style="submit-button" />
+      <Buttons text="Tweet" type="submit" styling="submit-button" />
     </form>
   );
 }

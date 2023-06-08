@@ -1,6 +1,6 @@
-function Buttons({text="next", callBack, style }) {
+function Buttons({text="Next", callBack, styling }) {
 
-    return <button className={style} onClick={callBack}>{text}</button>
+    return <button className={styling} onClick={callBack}>{text}</button>
 }
 
 export default Buttons;
