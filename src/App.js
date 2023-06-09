@@ -4,17 +4,18 @@ import Search from "./Search";
 import NavBar from "./NavBar";
 import Homepage from "./Homepage";
 import { useState, useEffect} from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
 
   const [user, setUser] = useState([])
   const [search, setSearch] = useState("")
   const [tweets, setTweets] = useState([])
+  const [posted, setPosted] = useState([])
   const [slice, setSlice] = useState([0, 100])
   const [likedTweets, setLikedTweets] = useState([])
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-
+  
   useEffect(() => {
     fetch('http://localhost:3000/twitter')
     .then(resp => resp.json())
@@ -102,6 +103,8 @@ function App() {
               handleLike={handleLike}
               setTweets={setTweets}
               likedTweets={likedTweets}
+              setPosted={setPosted}
+              posted={posted}
             />} 
           />
 
@@ -116,6 +119,9 @@ function App() {
               handleLike={handleLike}
             />
           }/>
+
+          <Route path="*" element={<Navigate to="/" />} />
+
         </Routes>
       </div>
     </div>

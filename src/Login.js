@@ -3,10 +3,9 @@ import TweetCard from './TweetCard'
 import NewTweet from './NewTweet'
 import { useEffect, useState } from 'react'
 
-function Login({isLoggedIn, setIsLoggedIn, user, setUser, handleLike, setTweets, likedTweets}) {
+function Login({isLoggedIn, setIsLoggedIn, user, setUser, handleLike, setTweets, likedTweets, posted, setPosted}) {
 
   const [users, setUsers] = useState([])
-  const [posted, setPosted] = useState([])
   const [userName, setUsername] = useState('')
 
   let renderLikedTweets
@@ -58,18 +57,22 @@ function Login({isLoggedIn, setIsLoggedIn, user, setUser, handleLike, setTweets,
       />
     })
   }
+
+  function handleSignUp() {
+    console.log('sign up')
+  }
   
 
   return ( 
     <div>
       {!isLoggedIn && 
-        <input className="login" type="text" 
+        <input className="login" type="password" placeholder='Password'
         onChange={handleChange} value={userName}/>
       }
 
       {isLoggedIn ? 
         <Buttons text='Log Out' callBack={handleLogOut} styling='log-out'/> : 
-        <Buttons text='Log In' callBack={handleLogin} />
+        <Buttons text='Log In' callBack={user ? handleLogin : handleSignUp} />
       }
 
       {isLoggedIn && <NewTweet setTweets={setTweets} setPosted={setPosted}/>}
