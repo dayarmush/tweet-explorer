@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 function Login({isLoggedIn, setIsLoggedIn, user, setUser, handleLike, setTweets, likedTweets, posted, setPosted}) {
 
   const [users, setUsers] = useState([])
+  const [hasForm, setHasForm] = useState(false)
   const [userName, setUsername] = useState('')
 
   let renderLikedTweets
@@ -37,6 +38,10 @@ function Login({isLoggedIn, setIsLoggedIn, user, setUser, handleLike, setTweets,
     setIsLoggedIn(pre => !pre)
   }
 
+  function handleHasForm() {
+    setHasForm(pre => !pre)
+  }
+
   if (user.tweets) {
      renderLikedTweets = likedTweets.map(tweet => {
       return <TweetCard 
@@ -59,11 +64,6 @@ function Login({isLoggedIn, setIsLoggedIn, user, setUser, handleLike, setTweets,
     })
   }
 
-  function handleSignUp() {
-    console.log('sign up')
-  }
-  
-
   return ( 
     <div>
       {!isLoggedIn && 
@@ -75,12 +75,12 @@ function Login({isLoggedIn, setIsLoggedIn, user, setUser, handleLike, setTweets,
         <Buttons text='Log Out' callBack={handleLogOut} styling='log-out'/> : 
         <>
           <Buttons text='Log In' callBack={handleLogin} styling='log-in'/>
-          <Buttons text='Sign Up' styling='sign-up' />
+          <Buttons text='Sign Up' styling='sign-up' callBack={handleHasForm}/>
         </>
       }
 
       <div>
-       {!isLoggedIn && <SignUp />} 
+       {!isLoggedIn && hasForm && <SignUp />} 
       </div>
 
       {isLoggedIn && <NewTweet setTweets={setTweets} setPosted={setPosted}/>}
