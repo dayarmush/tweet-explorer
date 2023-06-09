@@ -71,14 +71,17 @@ function Login({isLoggedIn, setIsLoggedIn, user, setUser, handleLike, setTweets,
         onChange={handleChange} value={userName}/>
       }
 
+      {isLoggedIn ? 
+        <Buttons text='Log Out' callBack={handleLogOut} styling='log-out'/> : 
+        <>
+          <Buttons text='Log In' callBack={handleLogin} styling='log-in'/>
+          <Buttons text='Sign Up' styling='sign-up' />
+        </>
+      }
+
       <div>
        {!isLoggedIn && <SignUp />} 
       </div>
-
-      {isLoggedIn ? 
-        <Buttons text='Log Out' callBack={handleLogOut} styling='log-out'/> : 
-        <Buttons text='Log In' callBack={user ? handleLogin : handleSignUp} />
-      }
 
       {isLoggedIn && <NewTweet setTweets={setTweets} setPosted={setPosted}/>}
 

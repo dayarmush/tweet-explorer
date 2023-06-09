@@ -36,45 +36,47 @@ function SignUp() {
   }
 
   return ( 
-    <form onSubmit={handleSubmit}>      
-      <input 
-        type="text" 
-        id="firstName"
-        name="firstName" 
-        placeholder="First Name" 
-        value={form.firstName}
-        onChange={handleFormChange}
-      />
+    <div className="form">
+      <form onSubmit={handleSubmit} className="form">      
+        <input 
+          type="text" 
+          id="firstName"
+          name="firstName" 
+          placeholder="First Name" 
+          value={form.firstName}
+          onChange={handleFormChange}
+        />
 
-      <input 
-        type="text" 
-        id="lastName"
-        name="lastName" 
-        placeholder="Last Name"
-        value={form.lastName}
-        onChange={handleFormChange}
-      />
+        <input 
+          type="text" 
+          id="lastName"
+          name="lastName" 
+          placeholder="Last Name"
+          value={form.lastName}
+          onChange={handleFormChange}
+        />
 
-      <input 
-        type="text" 
-        id="username" 
-        name="username"
-        placeholder="Username"
-        value={form.username}
-        onChange={handleFormChange}
-      />
+        <input 
+          type="text" 
+          id="username" 
+          name="username"
+          placeholder="Username"
+          value={form.username}
+          onChange={handleFormChange}
+        />
 
-      <input 
-        id="password"
-        type="password" 
-        name="password" 
-        placeholder="Password"
-        value={form.password}
-        onChange={handleFormChange}
-      />
+        <input 
+          id="password"
+          type="password" 
+          name="password" 
+          placeholder="Password"
+          value={form.password}
+          onChange={handleFormChange}
+        />
 
-      <Buttons text="Submit"/>
-    </form>
+        <Buttons text="Submit"/>
+      </form>
+    </div>
      );
 }
 
