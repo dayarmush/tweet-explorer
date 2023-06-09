@@ -30,14 +30,17 @@ function TweetCard({ singleTweet, isLoggedIn, handleLike, setTweets}) {
   
   return (
     <div className="card">
-      <p>{tweet}</p>
-      <p><span className="likes">❤️ {likeCount}</span></p>
-      {isLoggedIn && isLiked ? 
-        <Buttons callBack={handleClick} text="Dislike"/> : 
-        <Buttons callBack={handleClick} text="Sweet Tweet"/>
-      }
-      {isLoggedIn && <Buttons callBack={handleDelete} text="Delete"/>}
-      {isLoggedIn && <Buttons text='Add to Liked' callBack={() => handleLike(id)}/>}
+      <p className='card-tweet'>{tweet}</p>
+      <p><span className="card-likes">❤️ {likeCount}</span></p>
+      <div className='button-div'>
+        {isLoggedIn && isLiked ? 
+        <Buttons callBack={handleClick} text="Dislike" styling='card-buttons'/> : 
+        <Buttons callBack={handleClick} text="Sweet Tweet" styling='card-buttons'/>}
+
+        {isLoggedIn && <Buttons callBack={handleDelete} text="Delete" styling='card-buttons'/>}
+        {isLoggedIn && <Buttons text='Add to Liked' callBack={() => handleLike(id)} styling='card-buttons'/>}
+      </div>
+      
     </div>
 );
 }

@@ -1,6 +1,6 @@
 import Buttons from "./Buttons";
 
-function NewTweet({ setTweets }) {
+function NewTweet({ setTweets, setPosted }) {
 
   const onSubmit = (event) => {
     event.preventDefault(); 
@@ -10,7 +10,9 @@ function NewTweet({ setTweets }) {
       'likes': 0,
       'tweet': event.target.tweet.value
     };
-  
+    
+    setPosted(prePosted => [...prePosted, newTweet])
+
     fetch('http://localhost:3000/twitter', {
       method: 'POST',
       headers: {

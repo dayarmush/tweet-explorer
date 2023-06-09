@@ -11,6 +11,7 @@
   position: fixed;
   width: 90%;
   left: 5%;
+  font-size: 20px;
 }
 
 .header a {
@@ -27,10 +28,6 @@ a.active {
   display: flex;
   flex-direction: column;
 }
-
-/* https://cdn.vox-cdn.com/thumbor/jBODMz9xwnGVl8cFJ-ZBjFvLZSM=/0x0:900x600/1400x1400/filters:focal(450x300:451x301)/cdn.vox-cdn.com/uploads/chorus_asset/file/6846843/twitter.0.png */
-/* https://cdn.pixabay.com/photo/2021/06/23/18/39/twitter-6359408_960_720.png) */
-/* https://www.digitaltrends.com/wp-content/uploads/2021/03/how-to-buy-twitter-followers-1.jpeg?resize=625%2C417&p=1 */
 
 body {
   background-image: url(https://img.freepik.com/premium-vector/twitter-logo-pattern-background_601658-528.jpg?w=2000);
@@ -64,11 +61,13 @@ body {
   padding: 5px;
   margin-left: 1em;
   margin-right: 80%;
-  /* justify-content: center; */
 }
 
+/* .dropdown {
+  
+} */
+
 .filter label, select, option {
-  /* background-color: #ffffff; */
   padding: 5px 5px;
   border-radius: 5px;
 }
@@ -95,16 +94,25 @@ button:hover {
 .card-likes {
   display: flex;
   align-items: center;
-  justify-self: center;
-  margin: 10px;
+  justify-content: center;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+.card-tweet {
+  padding: 0px;
+  margin: 0px;
+}
+
 .new-tweet-container {
-  margin: 30px;
+  margin: 30px 10%;
   padding: 10px;
   border-radius: 50px;
   background-color: #227baee1;
+  max-width: 30em;
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
 }
 
 .new-tweet-container h3 {
@@ -128,11 +136,13 @@ button:hover {
 }
 
 .textarea-field {
+  margin-left: 3.5em;
   padding: 20px;
   border: none;
   border-radius: 30px;
   resize: none;
   font-size: 14px;
+  max-width: 20em;
 }
 
 .submit-button {
@@ -172,6 +182,42 @@ button:hover {
 }
 
 .login {
-  margin-top: 10em;
-  padding: 10px;
+  width: 200px;
+  padding: 8px;
+  border: 3px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.section {
+  width: 100%; /* Adjust the width as needed */
+  background-color: #31a9cdb8;
+  margin-bottom: 20px;
+}
+
+.section h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 30px;
+  color: #fff;
+}
+
+.card-buttons {
+  max-width: 10em;
+  margin: 5px;
+}
+
+.button-div {
+  display: flex;
+  justify-content: center;
+}
+
+.log-out {
+  margin-right: 40%;
 }

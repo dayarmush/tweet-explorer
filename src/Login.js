@@ -6,8 +6,11 @@ import { useEffect, useState } from 'react'
 function Login({isLoggedIn, setIsLoggedIn, user, setUser, handleLike, setTweets, likedTweets}) {
 
   const [users, setUsers] = useState([])
+  const [posted, setPosted] = useState([])
   const [userName, setUsername] = useState('')
+
   let renderLikedTweets
+  let renderPostedTweets
 
   useEffect(() => {
     fetch('http://localhost:3000/users')
@@ -44,6 +47,17 @@ function Login({isLoggedIn, setIsLoggedIn, user, setUser, handleLike, setTweets,
       />
     })
   }
+
+  if (posted) {
+    renderPostedTweets = posted.map(post => {
+      return <TweetCard 
+        key={post.id}
+        singleTweet={post} 
+        isLoggedIn={isLoggedIn} 
+        handleLike={handleLike}
+      />
+    })
+  }
   
 
   return ( 
@@ -54,20 +68,22 @@ function Login({isLoggedIn, setIsLoggedIn, user, setUser, handleLike, setTweets,
       }
 
       {isLoggedIn ? 
-        <Buttons text='Log Out' callBack={handleLogOut} /> : 
+        <Buttons text='Log Out' callBack={handleLogOut} styling='log-out'/> : 
         <Buttons text='Log In' callBack={handleLogin} />
       }
 
-      {isLoggedIn && <NewTweet setTweets={setTweets}/>}
-      
-      <div>
-        {isLoggedIn && <h3>Liked Tweets</h3>}
-        {isLoggedIn && renderLikedTweets}
+      {isLoggedIn && <NewTweet setTweets={setTweets} setPosted={setPosted}/>}
+
+      <div className='container'>
+        <div className='section'>
+          {isLoggedIn && <h3>Liked Tweets</h3>}
+          {isLoggedIn && renderLikedTweets}
+        </div>
+        <div className='section'>
+          {isLoggedIn && <h3>Posted Tweets</h3>}
+          {isLoggedIn && renderPostedTweets}
+        </div>
       </div>
-      <div>
-        
-      </div>
-      
     </div>  
   );
 }

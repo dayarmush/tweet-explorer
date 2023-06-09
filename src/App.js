@@ -35,7 +35,7 @@ function App() {
 
   const handlePrev = () => {
       if (slice[0] === 0) {
-      alert('Error: Can only go Next')
+      alert('Error: Can only go to NEXT page ')
     } else {
       setSlice(prev => prev.map(pre => pre -= 100))
       window.scrollTo({

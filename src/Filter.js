@@ -38,8 +38,8 @@ function Filter({ tweets, slice, handleNext, handlePrev, isLoggedIn, handleLike,
       <div>
         <div className='filter'>
           <label htmlFor="filter">Filter By Category:</label>
-          <select name="filter" onChange={handleFilter}>
-            {categories.map(cat => <option key={cat}>{cat}</option>)}
+          <select name="filter" onChange={handleFilter} className='dropdown'>
+              {categories.map(cat => <option key={cat}>{cat}</option>)}
           </select>
         </div>
 
