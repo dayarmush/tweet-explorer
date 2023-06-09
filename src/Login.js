@@ -1,6 +1,7 @@
+import SignUp from './SignUp'
 import Buttons from './Buttons'
-import TweetCard from './TweetCard'
 import NewTweet from './NewTweet'
+import TweetCard from './TweetCard'
 import { useEffect, useState } from 'react'
 
 function Login({isLoggedIn, setIsLoggedIn, user, setUser, handleLike, setTweets, likedTweets, posted, setPosted}) {
@@ -69,6 +70,10 @@ function Login({isLoggedIn, setIsLoggedIn, user, setUser, handleLike, setTweets,
         <input className="login" type="password" placeholder='Password'
         onChange={handleChange} value={userName}/>
       }
+
+      <div>
+       {!isLoggedIn && <SignUp />} 
+      </div>
 
       {isLoggedIn ? 
         <Buttons text='Log Out' callBack={handleLogOut} styling='log-out'/> : 
