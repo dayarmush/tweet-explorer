@@ -1,43 +1,129 @@
+import Login from "./Login";
 import Filter from "./Filter";
 import Search from "./Search";
-import NewTweet from "./NewTweet";
-import { Routes, Route } from "react-router-dom";
 import NavBar from "./NavBar";
 import Homepage from "./Homepage";
-import React, { useState, useEffect} from "react";
+import { useState, useEffect} from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
-  let counter = 0
 
+  const [user, setUser] = useState([])
+  const [search, setSearch] = useState("")
   const [tweets, setTweets] = useState([])
-
+  const [posted, setPosted] = useState([])
+  const [slice, setSlice] = useState([0, 100])
+  const [likedTweets, setLikedTweets] = useState([])
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  
   useEffect(() => {
     fetch('http://localhost:3000/twitter')
     .then(resp => resp.json())
-    .then(tweetData => setTweets(tweetData))
+    .then(tweetData => setTweets(tweetData.slice(0, 300)))
   }, [])
+  
+  const handleNext = () => {
+    if (slice[1] === parseInt(tweets.length)) {
+      return alert('Error: No more pages')
+    } else {
+      setSlice(prev => prev.map(pre => pre += 100))
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  }
 
-  const topTweets = tweets.slice(0, 100)
-  const [search, setSearch] = useState("")
+  const handlePrev = () => {
+      if (slice[0] === 0) {
+      alert('Error: Can only go to NEXT page ')
+    } else {
+      setSlice(prev => prev.map(pre => pre -= 100))
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  function handleLike(id) {
+    setLikedTweets(pre => {
+      return [...pre, ...tweets.filter(tweet => tweet.id === id)];
+      // setTimeout(() => {
+      //   fetch(`http://localhost:3000/users/${user.id}`, {
+      //   method: 'PATCH',
+      //   headers: {
+      //     'content-Type' : 'application/json'
+      //   },
+      //   body: JSON.stringify({'tweets' : updatedLikedTweets})
+      //   })
+      // }, 2000);
+    
+    })
+  }
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBar setSlice={setSlice}/>
       <div className="page">
         <Routes>
-          <Route path='/Search' element={<Search setSearch={setSearch} tweets={tweets} search={search} />} />
-          <Route path='/Filter' element={<Filter  tweets={tweets}/>} />
-          <Route path='/newTweet' element={<NewTweet tweets={tweets} setTweets={setTweets}/>} />
-          <Route exact path='/' element={<Homepage 
-          tweets={tweets} 
-          setTweets={setTweets} 
-          keyword={tweets.keyword} 
-          likes={tweets.likes} 
-          tweet={tweets.tweet} 
-        />} />
+
+          <Route path='/Search' element={
+            <Search 
+              setSearch={setSearch} 
+              tweets={tweets} 
+              search={search}
+              slice={slice}
+              handleNext={handleNext}
+              handlePrev={handlePrev}
+              isLoggedIn={isLoggedIn}
+              handleLike={handleLike}
+              setTweets={setTweets}
+            />
+          }/>
+
+          <Route path='/Filter' element={
+            <Filter
+              tweets={tweets}
+              slice={slice}
+              handleNext={handleNext}
+              handlePrev={handlePrev}
+              isLoggedIn={isLoggedIn}
+              handleLike={handleLike}
+              setTweets={setTweets}
+            /> 
+          }/>
+
+          <Route path='/login' element={
+            <Login 
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+              user={user}
+              setUser={setUser}
+              handleLike={handleLike}
+              setTweets={setTweets}
+              likedTweets={likedTweets}
+              setPosted={setPosted}
+              posted={posted}
+            />} 
+          />
+
+          <Route exact path='/' element={
+            <Homepage 
+              tweets={tweets} 
+              setTweets={setTweets} 
+              handleNext={handleNext}
+              handlePrev={handlePrev}
+              slice={slice}
+              isLoggedIn={isLoggedIn}
+              handleLike={handleLike}
+            />
+          }/>
+
+          <Route path="*" element={<Navigate to="/" />} />
+
         </Routes>
       </div>
-      
     </div>
   );
 }

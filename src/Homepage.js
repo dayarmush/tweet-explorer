@@ -1,17 +1,29 @@
+import Buttons from "./Buttons"
 import TweetCard from "./TweetCard"
 
-function Homepage ({ tweets, keyword, likes, tweet }) {
+function Homepage ({ tweets, handleNext, handlePrev, slice, isLoggedIn, handleLike, setTweets }) {
 
-    const sortedTweets = tweets.sort((a, b) => b.likes - a.likes)
-    const topTweets = sortedTweets.slice(0, 100)
-    
-    let counter = 0
+  const tweetCopy = [...tweets]
+  const sortedTweets = tweetCopy.sort((a, b) => b.likes - a.likes)
+  const topTweets = sortedTweets.slice(slice[0], slice[1])
 
-    return(
-        <div>
-            {topTweets.map((tweet) => {
-                return <TweetCard key={counter++} singleTweet={tweet} />})}
-        </div>
+  return(
+    <div>
+      {topTweets.map((tweet) => {
+        return <TweetCard 
+                key={tweet.id} 
+                singleTweet={tweet} 
+                isLoggedIn={isLoggedIn} 
+                handleLike={handleLike}
+                tweets={tweets}
+                setTweets={setTweets}
+              />
+      })}
+      <div>
+        <Buttons text="Previous" callBack={handlePrev} />
+        <Buttons callBack={handleNext} />
+      </div>
+    </div>
     )
 }
 

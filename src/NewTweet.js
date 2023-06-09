@@ -1,42 +1,43 @@
-import { useEffect } from "react";
+import Buttons from "./Buttons";
 
-function NewTweet({ setTweet }) {
+function NewTweet({ setTweets, setPosted }) {
 
-    const onSubmit = (event) => {
-      event.preventDefault(); 
-
-      const newTweet = {
-        'keyword': event.target.keyword.value,
-        'likes': event.target.likes.value,
-        'tweet': event.target.tweet.value
-      };
-      console.log(newTweet)
-  
-      fetch('http://localhost:3000/twitter', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(newTweet)
-      })
-        .then(response => response.json())
-        .then((newData) => console.log(newData))
-        // .then(newData => setTweet(prev => [...prev, newData]));
+  const onSubmit = (event) => {
+    event.preventDefault(); 
+      
+    const newTweet = {
+      'keyword': event.target.keyword.value,
+      'likes': 0,
+      'tweet': event.target.tweet.value
     };
+    
+    setPosted(prePosted => [...prePosted, newTweet])
+
+    fetch('http://localhost:3000/twitter', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(newTweet)
+    })
+    .then(response => response.json())
+    .then(newData => setTweets(prev => [...prev, newData]));
+
+     event.target.reset()
+  };
   
-    return (
-      <div>
-        <h3>New Tweet</h3>
-        <form onSubmit={onSubmit}>
-          <input type="text" name="keyword" placeholder="Keyword" />
-          <input type="text" name="likes" placeholder="Likes" />
-          <input type="text" name="tweet" placeholder="Tweet" />
-          <button type="submit">Submit</button>
-        </form>
+  return (
+    <form className="new-tweet-container" onSubmit={onSubmit}>
+      <h3>New Tweet</h3>
+      <div className="tweet-content">
+        <input type="text" name="keyword" placeholder="Category" className="keyword-input"/>
+        <textarea type="text" name="tweet" placeholder="Tweet" className="textarea-field"/>
       </div>
-    );
+      <Buttons text="Tweet" type="submit" styling="submit-button" />
+    </form>
+  );
 }
   
-  export default NewTweet;
+export default NewTweet;
   

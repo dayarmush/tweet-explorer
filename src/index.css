@@ -7,10 +7,11 @@
   border-bottom-right-radius: 5px;
   opacity: 0.8;
   color: #fff;
-  padding: 10px;
+  padding: 20px;
   position: fixed;
   width: 90%;
   left: 5%;
+  font-size: 20px;
 }
 
 .header a {
@@ -29,7 +30,7 @@ a.active {
 }
 
 body {
-  background-image: url(https://www.digitaltrends.com/wp-content/uploads/2021/03/how-to-buy-twitter-followers-1.jpeg?resize=625%2C417&p=1);
+  background-image: url(https://img.freepik.com/premium-vector/twitter-logo-pattern-background_601658-528.jpg?w=2000);
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
@@ -46,8 +47,9 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
   padding: 10px 10px 0;
-  margin: 10px 20px 0; /* Add space on both sides */
+  margin: 20px 20px 0; /* Add space on both sides */
   max-width: 700px; /* Optional: Set a maximum width for the card */
+  min-width: 500px;
 }
 
 .page {
@@ -57,13 +59,16 @@ body {
 .filter {
   display: block;
   padding: 5px;
+  margin-top: 15px;
   margin-left: 1em;
   margin-right: 80%;
-  /* justify-content: center; */
 }
 
+/* .dropdown {
+  
+} */
+
 .filter label, select, option {
-  /* background-color: #ffffff; */
   padding: 5px 5px;
   border-radius: 5px;
 }
@@ -90,7 +95,131 @@ button:hover {
 .card-likes {
   display: flex;
   align-items: center;
-  justify-self: center;
-  margin: 10px;
+  justify-content: center;
   font-family: 'Roboto Condensed', sans-serif;
+}
+
+.card-tweet {
+  padding: 0px;
+  margin: 0px;
+}
+
+.new-tweet-container {
+  margin: 30px 10%;
+  padding: 10px;
+  border-radius: 50px;
+  background-color: #227baee1;
+  max-width: 30em;
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.new-tweet-container h3 {
+  color: #fff;
+  text-align: center;
+  margin: 5px;
+}
+
+.tweet-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.keyword-input {
+  position: relative;
+  margin: 0px 10em 10px ;
+  border-radius: 30px;
+  border: none;
+  padding: 5px;
+  width: 10em;
+}
+
+.textarea-field {
+  margin-left: 3.5em;
+  padding: 20px;
+  border: none;
+  border-radius: 30px;
+  resize: none;
+  font-size: 14px;
+  max-width: 20em;
+}
+
+.submit-button {
+  background-color: #0c60f0;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 10px 12em 0px;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 6em;
+}
+
+.search-container h1 {
+  margin-bottom: 5px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #173e8d;
+}
+
+.search-container input {
+  width: 30em;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+}
+
+.login {
+  width: 200px;
+  padding: 8px;
+  border: 3px solid #ccc;
+  border-radius: 4px;
+  margin-top: 3em;
+  margin-right: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.section {
+  width: 100%; /* Adjust the width as needed */
+  background-color: #31a9cdb8;
+  margin-bottom: 20px;
+}
+
+.section h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 30px;
+  color: #fff;
+}
+
+.card-buttons {
+  max-width: 10em;
+  margin: 5px;
+}
+
+.button-div {
+  display: flex;
+  justify-content: center;
+}
+
+.log-out {
+  margin-right: 40%;
 }

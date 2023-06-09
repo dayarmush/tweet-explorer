@@ -1,34 +1,42 @@
 import React from 'react';
+import Buttons from './Buttons';
 import TweetCard from "./TweetCard";
 
-let counter = 0
+function Search({setSearch, tweets, setTweets, search, slice, handleNext, handlePrev, isLoggedIn, handleLike}) {
+  
+  function handleChange(event) {
+    setSearch(event.target.value)
+  } 
 
-function Search({setSearch, tweets, search}) {
-    function handleChange(event) {
-        setSearch(event.target.value)
-      } 
+  const filteredTweets = tweets.filter(tweet => {
+    return tweet.tweet.toLowerCase().includes(search.toLowerCase())
+  })
 
-      const filteredTweets = tweets.slice(0, 500).filter(tweet => {
-        return tweet.tweet.toLowerCase().includes(search.toLowerCase()
-        )
-      })
-       
-      return (
-            <div className="ui search">
-              <div className="ui icon input">
-                <input className="prompt" onChange={handleChange} />
-                <i className="search icon" />
-                <h1>Search</h1>
-               {filteredTweets.slice(0, 100).map(tweet => {
-                return <TweetCard key={counter++} singleTweet={tweet} />
-                })}
-              </div>
-              <div>
-                
-              </div>
-            </div>
-          );
-      }
+  const renderSearch = filteredTweets
+  .slice(slice[0], slice[1]).map(tweet => {
+    return <TweetCard 
+            key={tweet.id} 
+            singleTweet={tweet} 
+            isLoggedIn={isLoggedIn} 
+            handleLike={handleLike}
+            setTweets={setTweets}
+          />
+  })
+
+  return (
+    <div>
+      <div className='search-container'>
+        <h1>Search</h1>
+        <input placeholder='🔎' onChange={handleChange} />
+      </div>
+      <div>
+        {renderSearch}
+        <Buttons text='Previous' callBack={handlePrev} />
+        <Buttons callBack={handleNext} />
+      </div>
+    </div>
+  );
+}
 
 
 export default Search;

@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import TweetCard from './TweetCard';
+import Buttons from './Buttons';
 
-function Filter({ tweets }) {
+function Filter({ tweets, slice, handleNext, handlePrev, isLoggedIn, handleLike, setTweets}) {
 
   const [filter, setFilter] = useState('')
-  const [slice, setSlice] = useState([0, 100])
-  
-  let counter = 0;
 
   const categories = [ 'COVID-19', 'Vaccine', 'Zoom', 'Bitcoin', 
     'Dogecoin', 'NFT', 'Elon Musk', 'Tesla', 'Amazon', 'iPhone 12',
@@ -20,33 +18,19 @@ function Filter({ tweets }) {
     setFilter(e.target.value)
   }
 
-  const handleNext = () => {
-    setSlice(prev => prev.map(pre => pre += 100))
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }
-
-  const handlePrev = () => {
-    if (slice[0] === 0) {
-      return null
-    } else {
-      setSlice(prev => prev.map(pre => pre -= 100))
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }
-  }
-
   const filteredTweets = tweets.filter(tweet => {
     return tweet.keyword.toLowerCase().includes(filter.toLocaleLowerCase())
   })
 
   const renderFilteredTweets = filteredTweets
   .slice(slice[0], slice[1]).map(tweet => {
-    return <TweetCard key={counter++} singleTweet={tweet}/>
+    return <TweetCard 
+            key={tweet.id} 
+            singleTweet={tweet} 
+            isLoggedIn={isLoggedIn} 
+            handleLike={handleLike}
+            setTweets={setTweets}
+          />
   })
     
 
@@ -54,15 +38,15 @@ function Filter({ tweets }) {
       <div>
         <div className='filter'>
           <label htmlFor="filter">Filter By Category:</label>
-          <select name="filter" onChange={handleFilter}>
-            {categories.map(cat => <option key={counter++}>{cat}</option>)}
+          <select name="filter" onChange={handleFilter} className='dropdown'>
+              {categories.map(cat => <option key={cat}>{cat}</option>)}
           </select>
         </div>
 
         <div>
           {renderFilteredTweets}
-          <button onClick={handlePrev}>Previous</button>
-          <button onClick={handleNext}>Next</button>
+          <Buttons text={'Previous'} callBack={handlePrev} />
+          <Buttons callBack={handleNext} />
         </div>
       </div>
     )
