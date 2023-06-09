@@ -190,6 +190,7 @@ button:hover {
   border-radius: 4px;
   margin-top: 3em;
   margin-right: 10px;
+  margin-left: 35px;
 }
 
 .container {
@@ -223,4 +224,37 @@ button:hover {
 
 .log-out {
   margin-right: 40%;
+}
+
+.form form {
+  display: flex;
+  width: 500px;
+  margin: 20% 0px;
+  background-color: white;
+  border-radius: 5px;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2em;
+}
+
+.form input {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.form button {
+  margin: 0px 0px 10px;
+}
+
+.log-in {
+  margin: auto;
+}
+
+.sign-up {
+  margin: 5px;
+
 }
