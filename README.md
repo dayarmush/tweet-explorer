@@ -4,8 +4,8 @@ Welcome to Tweet Explorer, your one-stop app to explore, search, and interact wi
 
 ## Table of Contents
 
-1. [Introduction](https://github.com/dayarmush/tweet-explorer/edit/main/README.md#1-introduction)
-2. [Features](2-Features)
+1. [Introduction](#1-introduction)
+2. [Features](#2-Features)
 3. [Installation](#3-Installation)
 4. [Usage](#4-Usage)
 5. [Authentication](#5-Authentication)
