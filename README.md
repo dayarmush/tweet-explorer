@@ -15,7 +15,7 @@ Welcome to Tweet Explorer, your one-stop app to explore, search, and interact wi
 
 ## 1. Introduction
 
-Tweet Explorer is a powerful web application that allows users to explore a vast collection of tweets from various topics. With the app's user-friendly interface, users can search for tweets based on keywords or categories. The home page showcases the top 100 most liked tweets, providing a quick glimpse into trending content. Additionally, registered users can interact with tweets, including liking, favoriting, posting, and deleting tweets.
+Tweet Explorer is a powerful web application that allows users to explore a vast collection of tweets from various topics. With the app's user-friendly interface, users can search for tweets based on keywords or categories. The home page showcases the top 100 most liked tweets. Additionally, registered users can interact with tweets, including liking, favoriting, posting, and deleting tweets.
 
 ## 2. Features
 
@@ -52,14 +52,14 @@ Visit the app's home page to get started. Non-authenticated users can explore th
 
 ## 5. Authentication
 
-Tweet Explorer provides user authentication to enable personalized interactions. Users can create an account and log in securely. We utilize JSON Web Tokens (JWT) for authentication and user session management.
+Tweet Explorer provides user authentication to enable personalized interactions. Users can create an account and log in.
 
 ## 6. Routes
 
 - **Home**: Displays the top 100 most liked tweets.
 - **Search by Keyword**: Allows users to search for tweets based on keywords.
 - **Search by Category**: Explore tweets from specific pre-defined categories.
-- **User Profile**: View and manage user account details.
+- **User Profile**: View user account.
 
 ## 7. Pagination
 
