@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# Tweet Explorer App - README
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to Tweet Explorer, your one-stop app to explore, search, and interact with over 100,000 tweets on 20+ topics! This README provides an overview of the app's features, installation instructions, and usage guidelines.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+1. [Introduction](https://github.com/dayarmush/tweet-explorer/edit/main/README.md#1-introduction)
+2. [Features](2-Features)
+3. [Installation](#3-Installation)
+4. [Usage](#4-Usage)
+5. [Authentication](#5-Authentication)
+6. [Routes](#6-Routes)
+7. [Pagination](#7-Pagination)
+8. [Feedback and Support](#8-Feedback-and-support)
 
-### `npm start`
+## 1. Introduction
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Tweet Explorer is a powerful web application that allows users to explore a vast collection of tweets from various topics. With the app's user-friendly interface, users can search for tweets based on keywords or categories. The home page showcases the top 100 most liked tweets, providing a quick glimpse into trending content. Additionally, registered users can interact with tweets, including liking, favoriting, posting, and deleting tweets.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 2. Features
 
-### `npm test`
+- **Diverse Topics**: Tweet Explorer offers a wide range of topics, allowing users to explore tweets related to their interests.
+- **Top 100 Liked Tweets**: The home page displays the top 100 most liked tweets, making it easy to discover trending content.
+- **Search by Keyword**: Users can search for tweets by entering specific keywords.
+- **Search by Category**: Explore tweets by selecting from 20+ pre-defined categories.
+- **User Authentication**: Sign up and log in to access personalized features.
+- **Interact with Tweets**: Authenticated users can like, favorite, post, and delete tweets.
+- **Pagination**: Convenient pagination on each route for smooth navigation through tweet results.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 3. Installation
 
-### `npm run build`
+To run Tweet Explorer locally on your machine, follow these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Clone the repository from [GitHub Repo](https://github.com/dayarmush/tweet-explorer) URL.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Navigate to the project directory.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Install the required dependencies using the package manager of your choice:
+`npm install`
 
-### `npm run eject`
+Start the JSON Server to simulate the backend with the following command:
+`npm run json-server --watch new-db.json`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+In a separate terminal or command prompt, run the app locally:
+`npm start`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The npm run json-server command will start the JSON Server and serve the tweet data from the provided JSON file. It will act as the backend API for your Tweet Explorer app during the development phase.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 4. Usage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Visit the app's home page to get started. Non-authenticated users can explore the top 100 most liked tweets and use the search functionality. To access personalized features, such as liking, favoriting, posting, and deleting tweets, sign up or log in.
 
-## Learn More
+## 5. Authentication
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Tweet Explorer provides user authentication to enable personalized interactions. Users can create an account and log in securely. We utilize JSON Web Tokens (JWT) for authentication and user session management.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 6. Routes
 
-### Code Splitting
+- **Home**: Displays the top 100 most liked tweets.
+- **Search by Keyword**: Allows users to search for tweets based on keywords.
+- **Search by Category**: Explore tweets from specific pre-defined categories.
+- **User Profile**: View and manage user account details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 7. Pagination
 
-### Analyzing the Bundle Size
+To enhance the user experience, we have implemented pagination on all routes that display tweet results. Pagination splits the tweets into pages, making it easier to navigate and reducing loading times.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 8. Feedback and Support
 
-### Making a Progressive Web App
+We value your feedback. If you have any suggestions, or need assistance, please don't hesitate to reach out.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Thank you for using Tweet Explorer! Happy tweeting and exploring! 🐦
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
