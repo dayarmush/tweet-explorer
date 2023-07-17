@@ -5,13 +5,13 @@ Welcome to Tweet Explorer, your one-stop app to explore, search, and interact wi
 ## Table of Contents
 
 1. [Introduction](#1-introduction)
-2. [Features](#2-Features)
-3. [Installation](#3-Installation)
-4. [Usage](#4-Usage)
-5. [Authentication](#5-Authentication)
-6. [Routes](#6-Routes)
-7. [Pagination](#7-Pagination)
-8. [Feedback and Support](#8-Feedback-and-support)
+2. [Features](#2-features)
+3. [Installation](#3-installation)
+4. [Usage](#4-usage)
+5. [Authentication](#5-authentication)
+6. [Routes](#6-routes)
+7. [Pagination](#7-pagination)
+8. [Feedback and Support](#8-feedback-and-support)
 
 ## 1. Introduction
 
